@@ -1,7 +1,8 @@
 {
   "name": "markdown-it-bracketed-spans",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "<span> tag for markdown-it markdown parser.",
+  "type": "module",
   "keywords": [
     "markdown-it-plugin",
     "markdown-it",
@@ -17,8 +18,47 @@
     "url": "https://github.com/mb21/markdown-it-bracketed-spans/issues"
   },
   "license": "MIT",
-  "main": "index.js",
-  "scripts": {},
-  "devDependencies": {},
-  "author": "Mauro Bieg"
+  "author": "Mauro Bieg",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/esm/index.js"
+    }
+  },
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc -p tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "prebuild": "npm run clean",
+    "clean": "rimraf dist",
+    "pretest": "npm run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "markdown-it": ">=13",
+    "markdown-it-attrs": ">=4"
+  },
+  "peerDependenciesMeta": {
+    "markdown-it-attrs": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "markdown-it": "^14.3.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.0",
+    "vitest": "^3.1.0"
+  }
 }
