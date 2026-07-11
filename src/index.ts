@@ -10,13 +10,13 @@ import type MarkdownIt from "markdown-it";
  * (that's a peer dependency).
  *
  * @example
- * ```ts
- * import markdownit from 'markdown-it'
- * import bracketedSpans from 'markdown-it-bracketed-spans'
+ * ```typescript
+ * import MarkdownIt from 'markdown-it'
+ * import bracketedSpansPlugin from 'markdown-it-bracketed-spans'
  * import attrsPlugin from 'markdown-it-attrs'
  *
- * const md = markdownit()
- * md.use(bracketedSpans)
+ * const md = new MarkdownIt()
+ * md.use(bracketedSpansPlugin)
  * md.use(attrsPlugin)
  *
  * md.render('foo [bar *bar*]{#id .class attr=value} baz')
