@@ -3,8 +3,8 @@
   "compilerOptions": {
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "outDir": "dist/esm",
-    "declarationDir": "dist/esm"
+    "outDir": "dist/.esm-tmp",
+    "declarationDir": "dist/.esm-tmp"
   },
   "include": ["src/index.ts"]
 }
