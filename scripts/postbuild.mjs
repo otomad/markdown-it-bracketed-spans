@@ -19,11 +19,10 @@
  */
 
 import { readFileSync, writeFileSync, copyFileSync, rmSync } from "node:fs";
-import { basename, extname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { basename, join, resolve } from "node:path";
 import { transform } from "esbuild";
 
-const DIST = fileURLToPath(new URL("../dist", import.meta.url));
+const DIST = resolve(import.meta.dirname, "../dist");
 
 /**
  * Move a JS file from tmpDir to dist/ with a new extension.
