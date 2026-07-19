@@ -14,11 +14,11 @@ Must be used together with the [markdown-it-attrs plugin](https://github.com/arv
 ## Usage
 
 ```javascript
-import MarkdownIt from 'markdown-it'
+import markdownit from 'markdown-it'
 import bracketedSpansPlugin from 'markdown-it-bracketed-spans'
 import attrsPlugin from 'markdown-it-attrs'
 
-const md = new MarkdownIt()
+const md = markdownit()
 md.use(bracketedSpansPlugin)
 md.use(attrsPlugin)
 

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import MarkdownIt from "markdown-it";
+import markdownit from "markdown-it";
 import attrsPlugin from "markdown-it-attrs";
 import bracketedSpansPlugin from "./index.js";
 import _dedent from "dedent";
@@ -10,7 +10,7 @@ import _dedent from "dedent";
  * @returns The rendered html text.
  */
 function renderMd(markdownSource: string, { inline = false } = {}): string {
-  const md = new MarkdownIt();
+  const md = markdownit();
   md.use(bracketedSpansPlugin);
   md.use(attrsPlugin);
   const result = inline ? md.renderInline(markdownSource) : md.render(markdownSource);
