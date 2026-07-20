@@ -11,9 +11,20 @@ module.exports = function bracketed_spans_plugin(md) {
     }
 
     var labelStart = state.pos + 1;
-    var labelEnd   = state.md.helpers.parseLinkLabel(state, state.pos, true);
+    var labelEnd   = state.md.helpers.parseLinkLabel(state, state.pos, false);
 
     if (labelEnd < 0) {
+      // parser failed to find closing ]
+      return false;
+    }
+
+    var tokens = state.tokens;
+    var tokens_len = state.tokens.length;
+
+    if ((tokens_len === 0 && state.level > 0) ||
+        (tokens_len > 0 && ((tokens[tokens_len - 1].nesting < 1 && tokens[tokens_len - 1].level !== state.level) ||
+        (tokens[tokens_len - 1].nesting > 0 && tokens[tokens_len - 1].level >= state.level)))
+       ) {
       // parser failed to find closing ]
       return false;
     }
