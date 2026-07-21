@@ -1,26 +1,19 @@
 import type { PluginSimple } from "markdown-it";
+
 /**
  * A markdown-it plugin that converts `[text]{attributes}` syntax into
  * `<span>` tags.
  *
- * Markup is based on [pandoc `bracketed_spans` extension](http://pandoc.org/MANUAL.html#extension-bracketed_spans).
- * Must be used together with the
- * [markdown-it-attrs plugin](https://github.com/arve0/markdown-it-attrs)
- * (that's a peer dependency).
- *
  * @example
  * ```typescript
- * import markdownit from 'markdown-it'
- * import bracketedSpansPlugin from 'markdown-it-bracketed-spans'
- * import attrsPlugin from 'markdown-it-attrs'
- *
- * const md = markdownit()
- * md.use(bracketedSpansPlugin)
- * md.use(attrsPlugin)
- *
- * md.render('foo [bar *bar*]{#id .class attr=value} baz')
+ * import mdIt from 'markdown-it';
+ * import mdItBracketedSpans from 'markdown-it-pandoc';
+ * import mdItAttrs from 'markdown-it-attrs';
+ * 
+ * const md = mdIt().use(mdItBracketedSpans).use(mdItAttrs);
+ * const output = md.render('foo [bar *bar*]{#id .class attr=value} baz');
  * // <p>foo <span id="id" class="class" attr="value">bar <em>bar</em></span> baz</p>
  * ```
  */
-declare const bracketed_spans_plugin: PluginSimple;
-export default bracketed_spans_plugin;
+declare const markdownItBracketedSpans: PluginSimple;
+export default markdownItBracketedSpans;
